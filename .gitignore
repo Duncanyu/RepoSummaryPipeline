@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+
+venv/
+.env/
+
+.DS_Store
+
+# Personal/sensitive files
+personal.py
+
+# Saved results
+saved/
