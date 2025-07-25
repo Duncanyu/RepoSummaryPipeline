@@ -6,3 +6,4 @@ NOTION_PAD_ID = "#"
 
 SAVE_DIR = "saved/"
 GPT_MODEL = "gpt-4"
+MAX_README_CHAR = 3000
