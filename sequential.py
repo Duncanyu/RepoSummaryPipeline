@@ -1,6 +1,9 @@
 from openai import OpenAI
 #CHANGE personal.personal TO config
 from personal.personal import MAX_README_CHAR
+from shared import query_val
+
+query = query_val
 
 def think(api_key, content, readme, model = "gpt-4"):
     client = OpenAI(api_key = api_key)
@@ -19,7 +22,7 @@ def think(api_key, content, readme, model = "gpt-4"):
     response = client.chat.completions.create(
         model = model,
         messages=[
-            {"role": "system", "content": "You are a technical assistant. Be direct and professional. Respond ONLY with the summary without preamble or follow-up commentary. Focus on strenghts and weaknesses so they can be compared."},
+            {"role": "system", "content": f"You are a technical assistant. Be direct and professional. Respond ONLY with the summary without preamble or follow-up commentary. Focus on strenghts and weaknesses so they can be compared. Here is the original query: {query}"},
             {"role": "user", "content": user_prompt}
         ]
     )
@@ -44,7 +47,7 @@ def compare(api_key, repo_list, model="gpt-4"):
     response = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "system", "content": "You are a technical assistant. Be direct and professional. Respond ONLY with the comparison without preamble or follow-up commentary. Please only compare repos given to you, do not introduce any new repositories or alternatives."},
+            {"role": "system", "content": f"You are a technical assistant. Be direct and professional. Respond ONLY with the comparison without preamble or follow-up commentary. Please only compare repos given to you, do not introduce any new repositories or alternatives. Here is the original query: {query}"},
             {"role": "user", "content": user_prompt}
         ]
     )

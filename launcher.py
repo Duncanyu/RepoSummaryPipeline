@@ -6,11 +6,12 @@ from filesystem import save, load
 from playwright_scrape import scrape
 from sequential import think, compare
 from notion import notion_save
+from shared import get_query
 
 #CHANGE personal.personal TO config
 from personal.personal import BRAVE_API_KEY, GITHUB_TOKEN, SAVE_DIR, GPT_API, GPT_MODEL, NOTION_API_KEY, NOTION_PAD_ID
 
-query = input("Query: ")
+query = get_query()
 limit = int(input("Limit: "))
 github_links = search(query, BRAVE_API_KEY, limit)
 
