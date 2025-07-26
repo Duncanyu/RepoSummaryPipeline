@@ -43,8 +43,8 @@ if github_links:
     comparison = compare(GPT_API, repo_data, GPT_MODEL)
     print(comparison)
     
-    # for repo in repo_data:
-    #     notion_save(NOTION_API_KEY, NOTION_PAD_ID, repo)
+    for repo in repo_data:
+        notion_save(NOTION_PAD_ID, NOTION_API_KEY, repo)
     
 else:
     print("Nothing found.")
